@@ -1,4 +1,9 @@
-deep_learning = ["('neural', 'network')"]
+deep_learning = [
+    "('deep', 'learn')",
+    "kera",
+    "('neural', 'network')",
+    "tensorflow",
+]
 
 machine_learning = [
     "classif",
@@ -11,8 +16,10 @@ machine_learning = [
     "model",
     "('mont', 'carlo')",
     "('natur', 'languag')",
+    "('parallel', 'process')",
     "('random', 'forest')",
     "sentiment",
+    "spark",
     "supervis",
     "('text', 'mine')",
     "tree",
@@ -27,19 +34,28 @@ analytics = [
     "covari",
     "bayesian",
     "dataanalyt",
+    "('databas', 'manag')",
     "eigenvalu",
     "eigenvector" "heteroscedast",
     "('linear', 'regress')",
     "logist",
     "multicollinear",
+    "multivari",
+    "mysql",
+    "nosql",
     "('odd', 'ratio')",
     "outlier",
     "precis",
     "('princip', 'compon')",
+    "python",
+    "r",
     "recal",
+    "regress",
     "sensit",
     "specif",
+    "('stochast', 'model')",
     "tableau",
+    "('time', 'seri')",
 ]
 
 management = ["busi", "('busi', 'analyt')", "leadership", "manag", "strateg"]
