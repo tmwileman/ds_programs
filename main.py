@@ -8,8 +8,7 @@ def main():
     processed_texts = scrape_curriculums(programs)
     scores = score_programs(processed_texts)
     scores = pd.DataFrame(scores)
-
-    return scores
+    scores.to_csv("scores.csv")
 
 
 if __name__ == "__main__":
