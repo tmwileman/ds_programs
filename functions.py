@@ -10,6 +10,8 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from nltk.util import ngrams
 import requests
+import seaborn as sns
+import matplotlib.pyplot as plt
 import string
 from typing import Dict, List, NamedTuple
 
@@ -17,10 +19,11 @@ from groupings import deep_learning, machine_learning, analytics, management
 
 
 class Score(NamedTuple):
-    program: str
+    university: str
     deep_learning_score: int
     machine_learning_score: int
     analytics_score: int
+    technical_score: int
     management_score: int
 
 
@@ -48,17 +51,17 @@ def process_text(raw_text) -> List[str]:
     return text_p, bigrms
 
 
-def scrape_curriculums(programs: Dict[str, str]) -> Dict[str, str]:
+def scrape_curriculums(sites: Dict[str, str]) -> Dict[str, str]:
     """Scrape each program's curriculum page and return the program as the key and processed text as the value in a dictionary
 
-    @type  programs: dictionary 
-    @param programs: keys == programs and values == urls 
+    @type  sites: dictionary 
+    @param sites: keys == programs and values == urls 
     """
 
     processed_texts = {}
     results = {}
 
-    for key, value in programs.items():
+    for key, value in sites.items():
         html = requests.get(value)
         soup = BeautifulSoup(html.text, "html.parser")
         text = soup.get_text()
@@ -76,7 +79,7 @@ def score_programs(processed_texts: Dict):
     """
 
     scores = []
-    for institution, tokens in processed_texts.items():
+    for university, tokens in processed_texts.items():
         deep_learning_count = 0
         machine_learning_count = 0
         analytics_count = 0
@@ -91,13 +94,38 @@ def score_programs(processed_texts: Dict):
                 analytics_count += count
             if token in management:
                 management_count += count
+        technical_score = deep_learning_count + machine_learning_count + analytics_count
         result = Score(
-            institution,
+            university,
             deep_learning_count,
             machine_learning_count,
             analytics_count,
+            technical_score,
             management_count,
         )
         scores.append(result)
 
     return scores
+
+
+def scatter_text(x, y, text_column, hue, data, title, xlabel, ylabel):
+    """Scatter plot with country codes on the x y coordinates
+       Based on this answer: https://stackoverflow.com/a/54789170/2641825"""
+    # Create the scatter plot
+    p1 = sns.scatterplot(x, y, data=data, hue=hue, size=20, legend=False)
+    # Add text besides each point
+    for line in range(0, data.shape[0]):
+        p1.text(
+            data[x][line] + 0.01,
+            data[y][line],
+            data[text_column][line],
+            horizontalalignment="left",
+            size="medium",
+            color="black",
+            weight="semibold",
+        )
+    # Set title and axis labels
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    return p1

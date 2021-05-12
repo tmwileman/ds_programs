@@ -1,24 +1,25 @@
-,program,deep_learning_score,machine_learning_score,analytics_score,management_score
-0,American University: MSBA,0,0,2,19
-1,Columbia University: MSDS,1,45,30,17
-2,Cornell University: MPS,0,9,16,4
-3,Drexel University: MSDS,0,18,12,24
-4,Duke University: MQM,0,19,14,64
-5,Harvard University: MSDS,0,40,4,5
-6,Indiana University: MSDS (all-tracks),0,10,7,3
-7,Illinois Institute of Technology: MSDS,0,2,2,6
-8,Johns Hopkins: MSDS,0,12,12,1
-9,NC State University: Institute for Advanced Analytics,0,39,54,8
-10,Northeastern University: MSDS,0,14,2,23
-11,SMU: MSDS,0,7,8,7
-12,Syracuse University: MSDS,0,4,9,92
-13,University of California Berkeley: MSDS,0,4,4,2
-14,University of Dayton: MSBN,0,0,3,0
-15,University of Denver: MSDS,0,22,28,2
-16,University of Michigan: MSDS,0,12,30,4
-17,University of Missouri: MSDS,0,27,26,8
-18,University of San Diego: Master of Advanced Study in Data Science,0,38,19,7
-19,University of Virginia:  MSDS (non-dual),0,12,17,0
-20,University of Wisconsin: MSDS (Online),0,1,1,3
-21,Wake Forest University: MSBA,0,34,24,59
-22,William and Mary: MSBA,2,27,29,55
+,university,deep_learning_score,machine_learning_score,analytics_score,technical_score,management_score,program_type
+0,American University: MSBA,0,0,2,0.02040816326530612,0.20652173913043478,Business School
+1,Columbia University: MSDS,1,45,30,0.7755102040816326,0.18478260869565216,Technical School
+2,Cornell University: MPS,0,9,16,0.25510204081632654,0.043478260869565216,Technical School
+3,Drexel University: MSDS,0,18,12,0.3061224489795918,0.2608695652173913,Technical School
+4,Duke University: MQM,0,19,14,0.336734693877551,0.6956521739130435,Business School
+5,Harvard University: MSDS,0,40,4,0.44897959183673464,0.05434782608695652,Technical School
+6,Indiana University: MSDS (all-tracks),0,10,7,0.17346938775510204,0.03260869565217391,Technical School
+7,Illinois Institute of Technology: MSDS,0,2,2,0.04081632653061224,0.06521739130434782,Technical School
+8,Johns Hopkins: MSDS,0,12,12,0.24489795918367346,0.010869565217391304,Technical School
+9,NC State University: Institute for Advanced Analytics,0,39,54,0.9489795918367346,0.08695652173913043,Technical School
+10,Northeastern University: MSDS,0,14,2,0.16326530612244897,0.21739130434782608,Technical School
+11,SMU: MSDS,0,7,8,0.1530612244897959,0.07608695652173914,Technical School
+12,Syracuse University: MSDS,0,4,9,0.13265306122448978,1.0,Technical School
+13,University of California Berkeley: MSDS,0,4,4,0.08163265306122448,0.021739130434782608,Technical School
+14,University of Dayton: MSBN,0,0,0,0.0,0.021739130434782608,Business School
+15,University of Denver: MSDS,0,42,56,0.9999999999999999,0.043478260869565216,Technical School
+16,University of Michigan: MSDS,0,12,30,0.42857142857142855,0.043478260869565216,Technical School
+17,University of Missouri: MSDS,0,27,26,0.5408163265306122,0.08695652173913043,Technical School
+18,University of Notre Dame: MSBA,0,0,0,0.0,0.0,Business School
+19,University of San Diego: Master of Advanced Study in Data Science,0,38,19,0.5816326530612245,0.07608695652173914,Technical School
+20,University of Virginia:  MSDS (non-dual),0,12,17,0.29591836734693877,0.0,Technical School
+21,University of Wisconsin: MSDS (Online),0,1,1,0.02040816326530612,0.03260869565217391,Technical School
+22,Wake Forest University: MSBA,0,34,24,0.5918367346938775,0.6413043478260869,Business School
+23,William and Mary: MSBA,2,27,29,0.5918367346938775,0.5978260869565217,Business School
