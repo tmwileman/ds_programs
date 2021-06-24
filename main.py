@@ -1,9 +1,8 @@
 import pandas as pd
-from PIL import Image
 import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
 
-from functions import scrape_curriculums, score_programs, scatter_text
+from functions import scrape_curriculums, score_programs, scatter_plot
 from programs import programs
 from sites import sites
 
@@ -17,7 +16,7 @@ def main():
     )
     scores = pd.merge(scores, program_type, how="left", on="university")
 
-    columns_to_normalize = ["technical_score", "management_score"]
+    columns_to_normalize = ["technical_per_word", "management_per_word"]
     x = scores[columns_to_normalize].values
     x_scaled = MinMaxScaler().fit_transform(x)
     scores_temp = pd.DataFrame(
@@ -25,9 +24,9 @@ def main():
     )
     scores[columns_to_normalize] = scores_temp
 
-    plot = scatter_text(
-        "management_score",
-        "technical_score",
+    scatter_plot(
+        "management_per_word",
+        "technical_per_word",
         "university",
         "program_type",
         data=scores,

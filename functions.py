@@ -20,11 +20,14 @@ from groupings import deep_learning, machine_learning, analytics, management
 
 class Score(NamedTuple):
     university: str
+    total_tokens: int
     deep_learning_score: int
     machine_learning_score: int
     analytics_score: int
     technical_score: int
     management_score: int
+    technical_per_word: int
+    management_per_word: int
 
 
 def process_text(raw_text) -> List[str]:
@@ -85,6 +88,7 @@ def score_programs(processed_texts: Dict):
         analytics_count = 0
         management_count = 0
         counts = dict(Counter(chain(*tokens)))
+        total_tokens = sum(counts.values())
         for token, count in counts.items():
             if token in deep_learning:
                 deep_learning_count += count
@@ -95,23 +99,31 @@ def score_programs(processed_texts: Dict):
             if token in management:
                 management_count += count
         technical_score = deep_learning_count + machine_learning_count + analytics_count
+        technical_per_word = technical_score / total_tokens
+        management_per_word = management_count / total_tokens
         result = Score(
             university,
+            total_tokens,
             deep_learning_count,
             machine_learning_count,
             analytics_count,
             technical_score,
             management_count,
+            technical_per_word,
+            management_per_word,
         )
         scores.append(result)
 
     return scores
 
 
-def scatter_text(x, y, text_column, hue, data, title, xlabel, ylabel):
-    """Scatter plot with country codes on the x y coordinates
-       Based on this answer: https://stackoverflow.com/a/54789170/2641825"""
+def scatter_plot(x, y, text_column, hue, data, title, xlabel, ylabel):
+    """
+    Scatter plot with country codes on the x y coordinates
+    Based on this answer: https://stackoverflow.com/a/54789170/2641825
+    """
     # Create the scatter plot
+    sns.set(rc={"figure.figsize": (15, 10)})
     p1 = sns.scatterplot(x, y, data=data, hue=hue, size=20, legend=False)
     # Add text besides each point
     for line in range(0, data.shape[0]):
@@ -119,13 +131,13 @@ def scatter_text(x, y, text_column, hue, data, title, xlabel, ylabel):
             data[x][line] + 0.01,
             data[y][line],
             data[text_column][line],
-            horizontalalignment="left",
+            # horizontalalignment="left",
             size="medium",
             color="black",
-            weight="semibold",
         )
     # Set title and axis labels
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
+    plt.savefig("ds_programs.png")
     return p1
